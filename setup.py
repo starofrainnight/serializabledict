@@ -40,5 +40,6 @@ setup(
         "Topic :: Software Development :: Libraries",
     ],
     install_requires=install_requires,
+    package_dir = {"": source_dir},
     packages=packages,
     )
