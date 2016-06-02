@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from pydgutils_bootstrap import use_pip
-use_pip()
+from pydgutils_bootstrap import use_pydgutils
+use_pydgutils()
 
 import sys
 from setuptools import setup, find_packages
