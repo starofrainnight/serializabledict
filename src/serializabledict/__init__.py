@@ -65,8 +65,11 @@ class SerializableDict(object):
             os.rename(self._dest_file_path, old_file_path)
 
         # Moved the new file as our configuration file
-        if os.path.exists(new_file_path):
-            os.rename(new_file_path, self._dest_file_path)
+        os.rename(new_file_path, self._dest_file_path)
+
+        # Removed old file after all (clean the rubbish after all success works)
+        if os.path.exists(old_file_path):
+            os.remove(old_file_path)
 
     def __del__(self):
         self.save()
