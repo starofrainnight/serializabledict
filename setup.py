@@ -3,6 +3,7 @@
 from pydgutils_bootstrap import use_pydgutils
 use_pydgutils()
 
+import pydgutils
 import sys
 from setuptools import setup, find_packages
 
