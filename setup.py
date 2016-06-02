@@ -26,7 +26,7 @@ setup(
     author="Hong-She Liang",
     author_email="starofrainnight@gmail.com",
     url="https://github.com/starofrainnight/%s" % package_name,
-    description="A library use for serialize dict",
+    description="A simple serializable dict",
     long_description=long_description,
     classifiers=[
         "Development Status :: 3 - Alpha",
