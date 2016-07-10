@@ -71,9 +71,6 @@ class SerializableDict(object):
         if os.path.exists(old_file_path):
             os.remove(old_file_path)
 
-    def __del__(self):
-        self.save()
-
     def __enter__(self):
         self._is_batch_update = True
 
@@ -93,4 +90,3 @@ class SerializableDict(object):
 
     def __str__(self):
         return str(self._data)
-
