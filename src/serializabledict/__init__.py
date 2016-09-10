@@ -71,6 +71,9 @@ class SerializableDict(object):
         if os.path.exists(old_file_path):
             os.remove(old_file_path)
 
+    def keys(self):
+        return self._data.keys()
+
     def __enter__(self):
         self._is_batch_update = True
 
@@ -84,6 +87,9 @@ class SerializableDict(object):
 
     def __getitem__(self, key):
         return self._data[key]
+
+    def __delitem__(self, name):
+        del self._data[name]
 
     def __contains__(self, item):
         return item in self._data
