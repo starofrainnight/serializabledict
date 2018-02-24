@@ -13,17 +13,17 @@ source_dir = pydgutils.process()
 
 packages = find_packages(where=source_dir)
 
-long_description=(
-     open("README.rst", "r").read()
-     + "\n" +
-     open("CHANGES.rst", "r").read()
-     )
+long_description = (
+    open("README.rst", "r").read()
+    + "\n" +
+    open("CHANGES.rst", "r").read()
+)
 
 install_requires = ["jsonpickle", "simplejson"]
 
 setup(
     name=package_name,
-    version="0.0.1",
+    version='0.0.1',
     author="Hong-She Liang",
     author_email="starofrainnight@gmail.com",
     url="https://github.com/starofrainnight/%s" % package_name,
@@ -40,6 +40,6 @@ setup(
         "Topic :: Software Development :: Libraries",
     ],
     install_requires=install_requires,
-    package_dir = {"": source_dir},
+    package_dir={"": source_dir},
     packages=packages,
-    )
+)
