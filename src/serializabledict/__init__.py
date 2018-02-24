@@ -78,7 +78,7 @@ class SerializableDict(object):
     def keys(self):
         return self._data.keys()
 
-    def get(key, default=None):
+    def get(self, key, default=None):
         return self._data.get(key, default)
 
     def __enter__(self):
