@@ -10,7 +10,7 @@ import jsonpickle
 import simplejson as json
 from collections import UserDict
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
 class SerializableDict(UserDict):
