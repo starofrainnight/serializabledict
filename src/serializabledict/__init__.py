@@ -8,23 +8,25 @@ import os
 import os.path
 import jsonpickle
 import simplejson as json
+from collections import UserDict
 
 
-class SerializableDict(object):
+class SerializableDict(UserDict):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(self, *args, **kwargs)
+
         self._dest_file_path = None
-        self._data = dict()
         self._is_batch_update = False
 
     def load(self, file_path):
         self._dest_file_path = file_path
-        self._data.clear()
+        self.data.clear()
 
         if os.path.exists(file_path):
             with open(file_path, "rb") as afile:
                 try:
-                    self._data.update(jsonpickle.decode(
+                    self.data.update(jsonpickle.decode(
                         afile.read().decode("utf-8")))
                 except json.scanner.JSONDecodeError:
                     pass
@@ -40,7 +42,7 @@ class SerializableDict(object):
         if self._dest_file_path is None:
             return
 
-        data = jsonpickle.encode(self._data)
+        data = jsonpickle.encode(self.data)
         data = json.dumps(
             json.loads(data),
             ensure_ascii=False,
@@ -75,12 +77,6 @@ class SerializableDict(object):
         if os.path.exists(old_file_path):
             os.remove(old_file_path)
 
-    def keys(self):
-        return self._data.keys()
-
-    def get(self, key, default=None):
-        return self._data.get(key, default)
-
     def __enter__(self):
         self._is_batch_update = True
 
@@ -89,17 +85,5 @@ class SerializableDict(object):
         self.save()
 
     def __setitem__(self, key, value):
-        self._data[key] = value
+        self.data[key] = value
         self.save()
-
-    def __getitem__(self, key):
-        return self._data[key]
-
-    def __delitem__(self, name):
-        del self._data[name]
-
-    def __contains__(self, item):
-        return item in self._data
-
-    def __str__(self):
-        return str(self._data)
