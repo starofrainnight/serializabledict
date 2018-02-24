@@ -9,7 +9,9 @@ import os.path
 import jsonpickle
 import simplejson as json
 
+
 class SerializableDict(object):
+
     def __init__(self):
         self._dest_file_path = None
         self._data = dict()
@@ -22,7 +24,8 @@ class SerializableDict(object):
         if os.path.exists(file_path):
             with open(file_path, "rb") as afile:
                 try:
-                    self._data.update(jsonpickle.decode(afile.read().decode("utf-8")))
+                    self._data.update(jsonpickle.decode(
+                        afile.read().decode("utf-8")))
                 except json.scanner.JSONDecodeError:
                     pass
 
@@ -67,7 +70,8 @@ class SerializableDict(object):
         # Moved the new file as our configuration file
         os.rename(new_file_path, self._dest_file_path)
 
-        # Removed old file after all (clean the rubbish after all success works)
+        # Removed old file after all (clean the rubbish after all success
+        # works)
         if os.path.exists(old_file_path):
             os.remove(old_file_path)
 
