@@ -19,7 +19,7 @@ long_description = (
     open("CHANGES.rst", "r").read()
 )
 
-install_requires = ["jsonpickle", "simplejson"]
+install_requires = ["jsonpickle", "simplejson", "PyYaml"]
 
 setup(
     name=package_name,
