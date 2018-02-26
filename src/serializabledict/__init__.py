@@ -6,6 +6,7 @@
 
 import os
 import os.path
+from threading import Lock
 from collections import UserDict
 from .storage.jsonfilestorage import JsonFileStorage
 
@@ -14,10 +15,10 @@ __version__ = '0.0.2'
 
 class SerializableDict(UserDict):
 
-    def __init__(self, initialdata=None, storage=JsonFileStorage()):
+    def __init__(self, initialdata=None, storage=JsonFileStorage(), batch_lock=Lock()):
         super().__init__(initialdata)
 
-        self._is_batch_update = False
+        self._batch_lock = batch_lock
         self.storage = storage
 
     def load(self):
@@ -29,17 +30,23 @@ class SerializableDict(UserDict):
         Save data to file
         """
         # Don't do real update if doing batch update
-        if self._is_batch_update:
+        if not self._batch_lock.acquire(False):
             return
 
-        self.storage.save(self.data)
+        try:
+            self.storage.save(self.data)
+        finally:
+            self._batch_lock.release()
 
     def __enter__(self):
-        self._is_batch_update = True
+        self._batch_lock.acquire()
 
     def __exit__(self, exc_type, exc_value, traceback):
-        self._is_batch_update = False
-        self.save()
+        try:
+            self.storage.save(self.data)
+        finally:
+            # Ensure lock be unlock even storage save raise an exception
+            self._batch_lock.release()
 
     def __setitem__(self, key, value):
         self.data[key] = value
