@@ -7,16 +7,15 @@ from .common import FormatMixin
 
 class JsonFormatMixin(FormatMixin):
 
-    def _do_load(self):
-        with open(self.path, "rb") as afile:
-            try:
-                ret = jsonpickle.decode(afile.read().decode("utf-8"))
-            except json.scanner.JSONDecodeError:
-                pass
+    def _loads(self, astr):
+        try:
+            ret = jsonpickle.decode(astr)
+        except json.scanner.JSONDecodeError:
+            pass
 
-            return ret
+        return ret
 
-    def _do_dumps(self, adict):
+    def _dumps(self, adict):
         data = jsonpickle.encode(adict)
         data = json.dumps(
             json.loads(data),

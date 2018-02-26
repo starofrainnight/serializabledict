@@ -18,7 +18,7 @@ class Storage(object):
 
 class FileStorage(Storage):
     """
-    Notice: You must implement _do_load() and _do_dumps() methods
+    Notice: You must implement _loads() and _dumps() methods
     """
 
     def __init__(self, apath=None):
@@ -26,10 +26,10 @@ class FileStorage(Storage):
 
         self.path = apath
 
-    # def _do_load(self):
+    # def _loads(self):
     #     raise NotImplemented()
 
-    # def _do_dumps(self, adict):
+    # def _dumps(self, adict):
     #     raise NotImplemented()
 
     def load(self):
@@ -41,7 +41,8 @@ class FileStorage(Storage):
         if not os.path.exists(self.path):
             return ret
 
-        return self._do_load()
+        with open(self.path, "rb") as afile:
+            return self._loads(afile.read().decode("utf-8"))
 
     def save(self, adict):
         """
@@ -51,7 +52,7 @@ class FileStorage(Storage):
         if self.path is None:
             raise ValueError("Can't save to 'None' path!")
 
-        data = self._do_dumps(adict).encode("utf-8")
+        data = self._dumps(adict).encode("utf-8")
 
         new_file_path = self.path + ".new"
         old_file_path = self.path + ".old"
@@ -85,8 +86,8 @@ class FileStorage(Storage):
 
 class FormatMixin(object):
 
-    def _do_load(self):
+    def _loads(self):
         raise NotImplemented()
 
-    def _do_dumps(self, adict):
+    def _dumps(self, adict):
         raise NotImplemented()
