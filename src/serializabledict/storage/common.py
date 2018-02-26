@@ -80,7 +80,7 @@ class FileStorage(Storage):
 
 class FormatMixin(object):
 
-    def _loads(self):
+    def _loads(self, astr):
         raise NotImplemented()
 
     def _dumps(self, adict):
