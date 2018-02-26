@@ -26,12 +26,6 @@ class FileStorage(Storage):
 
         self.path = apath
 
-    # def _loads(self):
-    #     raise NotImplemented()
-
-    # def _dumps(self, adict):
-    #     raise NotImplemented()
-
     def load(self):
         if self.path is None:
             raise ValueError("Can't load 'None' path!")
