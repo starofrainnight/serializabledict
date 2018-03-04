@@ -14,10 +14,7 @@ source_dir = pydgutils.process()
 packages = find_packages(where=source_dir)
 
 long_description = (
-    open("README.rst", "r").read()
-    + "\n" +
-    open("CHANGES.rst", "r").read()
-)
+    open("README.rst", "r").read() + "\n" + open("CHANGES.rst", "r").read())
 
 install_requires = ["jsonpickle", "simplejson", "PyYaml"]
 

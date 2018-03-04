@@ -1,11 +1,9 @@
 # -*- coding:utf-8 -*-
 
-
 import os.path
 
 
 class Storage(object):
-
     def __init__(self):
         pass
 
@@ -79,7 +77,6 @@ class FileStorage(Storage):
 
 
 class FormatMixin(object):
-
     def _loads(self, astr):
         raise NotImplemented()
 

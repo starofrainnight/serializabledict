@@ -14,8 +14,10 @@ __version__ = '0.0.2'
 
 
 class SerializableDict(UserDict):
-
-    def __init__(self, initialdata=None, storage=JsonFileStorage(), batch_lock=Lock()):
+    def __init__(self,
+                 initialdata=None,
+                 storage=JsonFileStorage(),
+                 batch_lock=Lock()):
         super().__init__(initialdata)
 
         self._batch_lock = batch_lock

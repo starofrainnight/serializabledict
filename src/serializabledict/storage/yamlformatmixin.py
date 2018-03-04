@@ -6,7 +6,6 @@ from .common import FormatMixin
 
 
 class YamlFormatMixin(FormatMixin):
-
     def _loads(self, astr):
         return yaml.safe_load(astr)
 
