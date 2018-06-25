@@ -16,7 +16,6 @@ A simple serializable dict
 
 
 * License: Apache-2.0
-* Documentation: https://serializabledict.readthedocs.io.
 
 
 Features
