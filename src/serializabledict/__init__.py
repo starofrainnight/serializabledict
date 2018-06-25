@@ -10,7 +10,7 @@ from threading import RLock
 from collections import UserDict
 from .storage.jsonfilestorage import JsonFileStorage
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 
 class SerializableDict(UserDict):
