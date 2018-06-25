@@ -1,15 +1,13 @@
-recursive-include src *
-
-include *.rst
-include *.txt
+include LICENSE
 include setup.cfg
 include pydgutils_bootstrap.py
+include requirements*.txt
 
 prune preprocessed
 
-global-exclude *.dll
-global-exclude *.pyc
-global-exclude *.pyo
-global-exclude *.so
-global-exclude *.bak
-global-exclude *.old
+recursive-include src *
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
