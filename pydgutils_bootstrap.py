@@ -1,7 +1,7 @@
 '''
 The MIT License (MIT)
 
-Copyright (c) 2016, Hong-She Liang <starofrainnight@gmail.com>.
+Copyright (c) 2016-2018, Hong-She Liang <starofrainnight@gmail.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@ THE SOFTWARE.
 '''
 Bootstrap pydgutils setup environment
 
-@date 2016-05-31
 @author Hong-She Liang <starofrainnight@gmail.com>
 '''
 
@@ -188,5 +187,5 @@ def use_pydgutils():
         import pydgutils
     except:
         use_pip()
-        import pip
-        pip.main(["install", "pydgutils"])
+
+        os.system("%s -m pip install pydgutils" % sys.executable)
