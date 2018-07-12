@@ -4,8 +4,6 @@
 @author Hong-She Liang <starofrainnight@gmail.com>
 '''
 
-import os
-import os.path
 from threading import RLock
 from collections import UserDict
 from .storage.jsonfilestorage import JsonFileStorage
