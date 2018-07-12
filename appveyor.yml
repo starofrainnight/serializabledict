@@ -11,8 +11,8 @@ environment:
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
-    - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7.x"
+    # - PYTHON: "C:\\Python27"
+    #   PYTHON_VERSION: "2.7.x"
 
     - PYTHON: "C:\\Python34"
       PYTHON_VERSION: "3.4.x"

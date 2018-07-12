@@ -41,10 +41,10 @@ def test(env):
             run_path("setup.py test")
         elif env == 'mypy':
             run_module("pip install mypy")
-            run_module("mypy -m src.serializabledict --ignore-missing-imports")
+            run_module("mypy -m serializabledict --ignore-missing-imports")
         elif env == 'flake8':
             run_module("pip install flake8")
-            run_module("flake8 src.serializabledict")
+            run_module("flake8 serializabledict")
 
 
 @main.command()
