@@ -26,7 +26,7 @@ tests_requires = [
 
 setup(
     name='serializabledict',
-    version='0.0.4',
+    version='0.0.5',
     description="A simple serializable dict",
     long_description=long_description,
     author="Hong-She Liang",
